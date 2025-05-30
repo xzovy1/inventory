@@ -1,11 +1,10 @@
 # Inventory App
 ### Dependencies
 Postgres | Express.js | express-validator | Embedded JS
-``npm install pg express express-validator ejs``
 
 ### Goals
 Build a CRUD/ Inventory app implementing backend concepts learned so far Using Express and PostgreSQL.
-It will contain categories.
+It will contain categories, items, users and orders.
 Categories will be viewed from the home page
 Selected categories will list every item in that category and other relevant info (price, quantity perhaps nutritional info)
 Both items and categories will have CRUD methods.
@@ -23,7 +22,6 @@ Since this will be for groceries the tables will be:
   - category id (primary key)
   - category name (varchar, unique)
   - description (text,  nullable)
-  - product id (foreign key)
   - image_url
 ##### orders:
   - order_id (primary key)
@@ -52,26 +50,39 @@ Since this will be for groceries the tables will be:
 
   #### '/' Homepage
     display generic login
+    create new user from homepage.
     if not logged in able to view but not update or delete.
 
   #### '/categories'
     GET display all categories --> potentially generic photo of each one.
     POST create new category
-    GET '/categories/:id 
+    GET '/categories/:id' 
     - individual category page
-    PUT update category
+    POST '/categories/:id' update category
     DELETE  delete category
 
   #### '/products'
     GET display all products and relevant info
+    POST '/products/' adds a product
     GET '/products/:id' displays a specific product
-    POST '/products/:id' adds a specific product
-    PUT updates individual product
+    POST '/products/:id updates individual product
     DELETE removes product.
 
   #### '/orders'
    GET displays all orders
    POST creates a new order
    GET '/order/:id' displays specific order
-   PUT '/order/:id' updates order
+   POST '/order/:id' updates order
    DELETE removes order
+  
+  #### '/users'
+    GET displays all users
+    POST creates new user
+    POST '/users/:id' updates user
+    GET '/users/:id' gets user info
+    DELETE removes user
+
+
+## Don't Forget to use:
+- validation
+- middleware
