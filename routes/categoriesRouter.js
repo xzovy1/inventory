@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const categoriesRouter = Router();
-const categoriesController = require('..controllers/categoriesController.js');
+const categoriesController = require('../controllers/categoriesController');
 
 categoriesRouter.get('/', categoriesController.categoriesGet);
 categoriesRouter.post('/', categoriesController.categoriesPost);

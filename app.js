@@ -13,6 +13,9 @@ app.use('/users', usersRouter);
 app.use('/categories', categoriesRouter);
 app.use('/orders', ordersRouter);
 app.use('/products', productRouter);
+app.get('/', (req, res) => {
+    res.render('login')
+})
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, ()=>console.log(`listening on http://localhost:${PORT}`))
