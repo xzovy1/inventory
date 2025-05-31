@@ -104,7 +104,8 @@ Categories -- Products -- Orders -- UserInfo
       - Name, password, username ,email, dob, address, phone
   - login section : username or email , password login button.
     - successful login redirects to homepage
-- #### Home page displays clickable sections to select Products, Orders, Categories and update user info
+- #### Home page 
+  - displays clickable sections for Products, Orders, Categories and Update User
 - #### Categories redirects to '/categories' page
   - displays all individual categories
     - add new category button
@@ -118,13 +119,9 @@ Categories -- Products -- Orders -- UserInfo
     - displays product info
     - __if logged in__, settings to update product info.
 - #### Orders redirects to '/orders'
-  - if admin : 
     - displays all orders
+  - if admin : 
     - able to edit orders (order status,set/remove order-items, delete order)
-  - if user : 
-    - displays all orders associated with the users id.
-    - able to view order status
-    - update order
 - #### Users redirects to '/users'
   - if admin:
     - CRUD capabilities on all users

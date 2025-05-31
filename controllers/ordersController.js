@@ -1,8 +1,14 @@
 const db = require('../db/queries');
+const links = [
+    {href: '../homepage', text: 'Home'},
+    {href: '../categories', text: 'Categories'},
+    {href: '../products', text: 'Products'},
+    {href: '../users', text: 'Users'},
+]
 
 exports.ordersGet = (req, res) => {
     //show all orders
-    res.render('orders');
+    res.render('orders', {links: links});
 }
 
 exports.ordersPost = (req, res) => {
