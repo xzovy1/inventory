@@ -2,6 +2,7 @@ const db = require('../db/queries');
 
 exports.categoriesGet = (req, res) => {
     //show all categories
+    res.render('categories');
 }
 
 exports.categoriesPost = (req, res) => {

@@ -87,10 +87,21 @@ Since this will be for groceries the tables will be:
     DELETE removes user
 
 ### UI/UX Flow
+ 
+  Login --- CreateUser
+    |____________|
+                 |
+              Homepage
+                 |
+    _____________|______________________
+    |            |          |          |
+Categories -- Products -- Orders -- UserInfo
+
+
 - #### login page with login form and create user button 
-  - create user button redirects to '/users'
+  - create user button redirects to '/' Homepage
     - basic form to create user containing:
-      - Name, password, username ,email, dob
+      - Name, password, username ,email, dob, address, phone
   - login section : username or email , password login button.
     - successful login redirects to homepage
 - #### Home page displays clickable sections to select Products, Orders, Categories and update user info
