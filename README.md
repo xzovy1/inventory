@@ -87,7 +87,7 @@ Since this will be for groceries the tables will be:
     DELETE removes user
 
 ### UI/UX Flow
- 
+ ``
   Login --- CreateUser
     |____________|
                  |
@@ -96,6 +96,7 @@ Since this will be for groceries the tables will be:
     _____________|______________________
     |            |          |          |
 Categories -- Products -- Orders -- UserInfo
+``
 
 
 - #### login page with login form and create user button 
