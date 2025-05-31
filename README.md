@@ -56,6 +56,7 @@ Since this will be for groceries the tables will be:
   #### '/categories'
     GET display all categories --> potentially generic photo of each one.
     POST create new category
+      - name, description
     GET '/categories/:id' 
     - individual category page
     POST '/categories/:id' update category
@@ -64,6 +65,7 @@ Since this will be for groceries the tables will be:
   #### '/products'
     GET display all products and relevant info
     POST '/products/' adds a product
+      - name, description, price, category, quantity-in-order
     GET '/products/:id' displays a specific product
     POST '/products/:id updates individual product
     DELETE removes product.
@@ -77,12 +79,47 @@ Since this will be for groceries the tables will be:
   
   #### '/users'
     GET displays all users
+      default : admin
     POST creates new user
+      name, email, username, user-privileges, account-creation-date, order-history
     POST '/users/:id' updates user
     GET '/users/:id' gets user info
     DELETE removes user
 
+### UI/UX Flow
+- #### login page with login form and create user button 
+  - create user button redirects to '/users'
+    - basic form to create user containing:
+      - Name, password, username ,email, dob
+  - login section : username or email , password login button.
+    - successful login redirects to homepage
+- #### Home page displays clickable sections to select Products, Orders, Categories and update user info
+- #### Categories redirects to '/categories' page
+  - displays all individual categories
+    - add new category button
+    - selecting a category:
+      - displays products *in* that category
+        - each product can be clicked to be redirected to that product page. 
+      - __if logged in__, settings to update category
+- #### Products redirects to '/products'
+  - displays all products regardless of category ( make filterable?)
+  - selecting product:
+    - displays product info
+    - __if logged in__, settings to update product info.
+- #### Orders redirects to '/orders'
+  - if admin : 
+    - displays all orders
+    - able to edit orders (order status,set/remove order-items, delete order)
+  - if user : 
+    - displays all orders associated with the users id.
+    - able to view order status
+    - update order
+- #### Users redirects to '/users'
+  - if admin:
+    - CRUD capabilities on all users
+  - if user:
+    - CRUD capabilities on only their own info
 
-## Don't Forget to use:
+### Don't Forget to use:
 - validation
 - middleware
