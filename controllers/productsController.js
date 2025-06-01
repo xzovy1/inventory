@@ -3,7 +3,6 @@ const db = require('../db/queries');
 const links = [
     {href: '../homepage', text: 'Home'},
     {href: '../categories', text: 'Categories'},
-    {href: '../orders', text: 'Orders'},
     {href: '../users', text: 'Users'},
 ]
 
