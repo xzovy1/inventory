@@ -2,8 +2,8 @@ const db = require('../db/queries');
 
 const links = [
     {href: '../homepage', text: 'Home'},
-    {href: '../categories', text: 'Categories'},
-    {href: '../products', text: 'Products'},
+    {href: '../genres', text: 'Genres'},
+    {href: '../books', text: 'Books'},
 ]
 
 exports.usersGet = (req, res) => {
