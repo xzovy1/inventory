@@ -56,7 +56,8 @@ Since this will be for groceries the tables will be:
   #### '/categories'
     GET display all categories --> potentially generic photo of each one.
     POST create new category
-      - name, description
+      - name
+      - description
     GET '/categories/:id' 
     - individual category page
     POST '/categories/:id' update category
@@ -65,7 +66,12 @@ Since this will be for groceries the tables will be:
   #### '/products'
     GET display all products and relevant info
     POST '/products/' adds a product
-      - name, description, price, category, quantity-in-order
+      - name
+      - description
+      - price
+      - category
+      - quantity-in-order
+      - SKU
     GET '/products/:id' displays a specific product
     POST '/products/:id updates individual product
     DELETE removes product.
@@ -73,6 +79,10 @@ Since this will be for groceries the tables will be:
   #### '/orders'
    GET displays all orders
    POST creates a new order
+    - items in the order (with price)
+    - subtotal of order
+    - user who placed the order(name, address)
+    - order number,  
    GET '/order/:id' displays specific order
    POST '/order/:id' updates order
    DELETE removes order

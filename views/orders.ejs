@@ -8,6 +8,19 @@
 <body>
     <%- include('navbar', {links: links}) %>
     <h1>Orders</h1>
-    
+    <!-- display all orders in db -->
+    <!-- order info contains: name and order number -->
+    <ul>
+        <% orders.map(order => { %>
+            <li>
+                <div><%= order.name %></div>
+                <div><%= order.order_number %></div>
+            </li>
+        <% }) %>
+    </ul>
+    <h3>Create a new order</h3>
+    <form action="/" method="post">
+        <!-- new order form -->
+    </form>
 </body>
 </html>
