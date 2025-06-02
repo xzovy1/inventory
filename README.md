@@ -4,40 +4,27 @@ Postgres | Express.js | express-validator | Embedded JS
 
 ### Goals
 Build a CRUD/ Inventory app implementing backend concepts learned so far Using Express and PostgreSQL.
-It will contain categories, items, users and orders.
-Categories will be viewed from the home page
-Selected categories will list every item in that category and other relevant info (price, quantity perhaps nutritional info)
-Both items and categories will have CRUD methods.
+It will contain genres, items and users 
+genres will be viewed from the home page
+Selected genres will list every item in that genre and other relevant info (price, quantity)
+Both items and genres will have CRUD methods.
+
+genres -> many-to-one relationship. 
+  - one genre can have many items.
+books -> one-to-one
+  - one book can be in one genre.
+users -> for the purpose of this app, only users can make create, update or delete.
 
 ### Database Tables
-Since this will be for groceries the tables will be: 
-##### products:  
-  - product id (primary key)
-  - product name 
+Since this will be for bookss the tables will be: 
+##### books:  
+  - book id (primary key)
+  - book name 
   - quantity
   - description
   - price
-  - category id (foreign key) 
-##### categories:
-  - category id (primary key)
-  - category name (varchar, unique)
-  - description (text,  nullable)
-  - image_url
-##### orders:
-  - order_id (primary key)
-  - order date
-  - order type (purchase, sales)
-  - user_id (foreign key)
-  - order status (pending , complete, processing, cancelled (optional) )
-  - total amount
-  - notes
-##### order_items
-  - order_item_id (primary key)
-  - order_id (foreign key)
-  - product_id (foreign key)
-  - quantity
-  - price
-  - subtotal
+  - genre id (foreign key) 
+
 ##### users:
   - user_id (primary key)
   - username
@@ -53,39 +40,28 @@ Since this will be for groceries the tables will be:
     create new user from homepage.
     if not logged in able to view but not update or delete.
 
-  #### '/categories'
-    GET display all categories --> potentially generic photo of each one.
-    POST create new category
+  #### '/genres'
+    GET display all genres --> potentially generic photo of each one.
+    POST create new genre
       - name
       - description
-    GET '/categories/:id' 
-    - individual category page
-    POST '/categories/:id' update category
-    DELETE  delete category
+    GET '/genres/:id' 
+    - individual genre page
+    POST '/genres/:id' update genre
+    DELETE  delete genre
 
-  #### '/products'
-    GET display all products and relevant info
-    POST '/products/' adds a product
+  #### '/books'
+    GET display all books and relevant info
+    POST '/books/' adds a book
       - name
       - description
       - price
-      - category
+      - genre
       - quantity-in-order
       - SKU
-    GET '/products/:id' displays a specific product
-    POST '/products/:id updates individual product
-    DELETE removes product.
-
-  #### '/orders'
-   GET displays all orders
-   POST creates a new order
-    - items in the order (with price)
-    - subtotal of order
-    - user who placed the order(name, address)
-    - order number,  
-   GET '/order/:id' displays specific order
-   POST '/order/:id' updates order
-   DELETE removes order
+    GET '/books/:id' displays a specific book
+    POST '/books/:id updates individual book
+    DELETE removes book.
   
   #### '/users'
     GET displays all users
@@ -103,10 +79,9 @@ Since this will be for groceries the tables will be:
                  |  
               Homepage  
                  |  
-    _____________|______________________  
-    |            |          |          |  
-Categories -- Products -- Orders -- UserInfo  
-
+    _____________|______
+    |       |          |  
+genres -- books -- UserInfo  
 
 - #### login page with login form and create user button 
   - create user button redirects to '/' Homepage
@@ -115,23 +90,19 @@ Categories -- Products -- Orders -- UserInfo
   - login section : username or email , password login button.
     - successful login redirects to homepage
 - #### Home page 
-  - displays clickable sections for Products, Orders, Categories and Update User
-- #### Categories redirects to '/categories' page
-  - displays all individual categories
-    - add new category button
-    - selecting a category:
-      - displays products *in* that category
-        - each product can be clicked to be redirected to that product page. 
-      - __if logged in__, settings to update category
-- #### Products redirects to '/products'
-  - displays all products regardless of category ( make filterable?)
-  - selecting product:
-    - displays product info
-    - __if logged in__, settings to update product info.
-- #### Orders redirects to '/orders'
-    - displays all orders
-  - if admin : 
-    - able to edit orders (order status,set/remove order-items, delete order)
+  - displays clickable sections for books, Orders, genres and Update User
+- #### genres redirects to '/genres' page
+  - displays all individual genres
+    - add new genre button
+    - selecting a genre:
+      - displays books *in* that genre
+        - each book can be clicked to be redirected to that book page. 
+      - __if logged in__, settings to update genre
+- #### books redirects to '/books'
+  - displays all books regardless of genre ( make filterable?)
+  - selecting book:
+    - displays book info
+    - __if logged in__, settings to update book info.
 - #### Users redirects to '/users'
   - if admin:
     - CRUD capabilities on all users

@@ -1,9 +1,8 @@
 const express = require('express');
 const portalRouter = require('./routes/portalRouter');
 const usersRouter = require('./routes/usersRouter')
-const categoriesRouter = require('./routes/categoriesRouter');
-const ordersRouter = require('./routes/ordersRouter');
-const productRouter = require('./routes/productsRouter');
+const genresRouter = require('./routes/genresRouter');
+const booksRouter = require('./routes/booksRouter');
 
 const app = express();
 
@@ -12,9 +11,8 @@ app.use(express.urlencoded({extended: true}));
 
 app.use('/', portalRouter);
 app.use('/users', usersRouter);
-app.use('/categories', categoriesRouter);
-app.use('/orders', ordersRouter);
-app.use('/products', productRouter);
+app.use('/genres', genresRouter);
+app.use('/books', booksRouter);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, ()=>console.log(`listening on http://localhost:${PORT}`))
