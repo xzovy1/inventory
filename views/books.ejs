@@ -8,7 +8,36 @@
 <body>
     <%- include('navbar', {links: links}) %>
     <h1>Books</h1>
+    <% books.map(book => { %>
+        <!-- <li> -->
+            <div>
+                <p><%= book.title %></p>
+                <p><%= book.author %></p>
+                <p>$<%= book.price %></p>
+                <p>In Stock: <%= book.quantity %></p>
+            </div>
+        <!-- </li> -->
+   <% }) %>
     <!-- display all Books in db -->
     <!-- contains name, image  -->
+     <h3>Add a book:</h3>
+     <form action="/books" method="post">
+        <label for="title"></label>
+        <input type="text" placeholder="Title" id="title" name="title">
+        <label for="author"></label>
+        <input type="text" placeholder="Author" name="author">
+        <label for="description"></label>
+        <textarea name="description" id="description" placeholder="description" name="description"></textarea>
+        <label for="price"></label>
+        <input type="number" name="price" id="price" placeholder="price" name="price" step=".01">
+        <label for="quantity"></label>
+        <input type="number" placeholder="quantity" name="quantity">
+        <select name="genre_id" id="genre">
+            <% genres.map( genre => { %>
+                <option value="<%= genre.id %>" ><%= genre.name %></option>
+           <% }) %>
+        </select>
+        <button>Add</button>
+     </form>
 </body>
 </html>

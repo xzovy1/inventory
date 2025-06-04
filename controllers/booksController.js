@@ -6,13 +6,18 @@ const links = [
     {href: '../users', text: 'Users'},
 ]
 
-exports.booksGet = (req, res) => {
+exports.booksGet = async(req, res) => {
     //show all books
-    res.render('books', {links: links});
+    const books = await db.getAllBooks();
+    const genres = await db.getAllGenres();
+    res.render('books', {links: links, books: books, genres: genres});
 }
 
-exports.booksPost = (req, res) => {
+exports.booksPost = async(req, res) => {
     //add new book
+    const { title, author, description, price, quantity, genre_id } = req.body;
+    await db.addBook(title, author, description, price, quantity, genre_id);
+    res.redirect('/books');
 }
 
 exports.bookGet = (req, res) => {

@@ -6,13 +6,17 @@ const links = [
     {href: '../users', text: 'Users'},
 ]
 
-exports.genresGet = (req, res) => {
+exports.genresGet = async (req, res) => {
     //show all genres
-    res.render('genres', {links: links});
+    const genres = await db.getAllGenres();
+    res.render('genres', {links: links, genres: genres,});
 }
 
-exports.genresPost = (req, res) => {
+exports.genresPost = async (req, res) => {
     //add new genre
+    const {genre} = req.body;
+    await db.addGenre(genre);
+    res.redirect('/genres');
 }
 
 exports.genreGet = (req, res) => {

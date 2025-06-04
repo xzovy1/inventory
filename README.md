@@ -19,19 +19,22 @@ users -> for the purpose of this app, only users can make create, update or dele
 Since this will be for bookss the tables will be: 
 ##### books:  
   - book id (primary key)
-  - book name 
+  - title 
+  - author
   - quantity
   - description
   - price
   - genre id (foreign key) 
 
+##### genres:  
+  - genre id (primary key)
+  - name
+  - description
+
 ##### users:
   - user_id (primary key)
   - username
   - email
-  - password_hash
-  - role
-  - date_registered
 
 ### API endpoints
 
@@ -52,7 +55,7 @@ Since this will be for bookss the tables will be:
 
   #### '/books'
     GET display all books and relevant info
-    POST '/books/' adds a book
+    POST '/books' adds a book
       - name
       - description
       - price

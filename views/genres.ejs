@@ -8,7 +8,18 @@
 <body>
     <%- include('navbar', {links: links}) %>
     <h1>Genres</h1>
+    <% genres.map(genre => { %>
+        <div>
+            <p><%= genre.name %></p>
+        </div>
+    <% }) %>
     <!-- display all Genres in db -->
     <!-- contains: name, desc, generalized image -->
+     <h3>Add Genre:</h3>
+     <form method="post" action="/genres">
+        <label for="genre">Genre Name:</label>
+        <input type="text" name="genre">
+        <button>Add Genre</button>
+     </form>
 </body>
 </html>
