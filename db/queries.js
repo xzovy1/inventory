@@ -5,11 +5,15 @@ async function getAllBooks() {
     return rows;
 }
 
-async function addBook(title, author, quantity, description, price, quantity, genre_id) {
+async function addBook(title, author, description, price, quantity, genre_id) {
    await db.query(
         "INSERT INTO books (title, author, description, price, quantity, fk_genre) VALUES ($1, $2, $3, $4, $5, $6)", 
         [title, author, description, price, quantity, genre_id]
     );
+}
+
+async function deleteBook(bookid){
+    await db.query("DELETE FROM books WHERE id = $1", [bookid]);
 }
 
 async function getAllGenres(){
@@ -27,4 +31,5 @@ module.exports = {
     addBook,
     getAllGenres,
     addGenre,
+    deleteBook,
 }

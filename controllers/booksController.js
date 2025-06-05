@@ -1,16 +1,11 @@
 const db = require('../db/queries');
 
-const links = [
-    {href: '../homepage', text: 'Home'},
-    {href: '../genres', text: 'Genres'},
-    {href: '../users', text: 'Users'},
-]
 
 exports.booksGet = async(req, res) => {
     //show all books
     const books = await db.getAllBooks();
     const genres = await db.getAllGenres();
-    res.render('books', {links: links, books: books, genres: genres});
+    res.render('books', {books, genres});
 }
 
 exports.booksPost = async(req, res) => {
@@ -28,6 +23,8 @@ exports.bookPost = (req, res) => {
     //update book
 }
 
-exports.bookDelete = (req, res) => {
+exports.bookDelete = async (req, res) => {
     //delete book
+    await db.deleteBook(req.params.id);
+    res.redirect('/books');
 }

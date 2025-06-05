@@ -6,11 +6,16 @@
     <title>Books</title>
 </head>
 <body>
-    <%- include('navbar', {links: links}) %>
+    <a href="/homepage">Home</a>
     <h1>Books</h1>
     <% books.map(book => { %>
         <!-- <li> -->
             <div>
+                <div>
+                    <form action="/books/<%= book.id %>/delete" method="post">
+                        <button><img src="" alt="x"></button>
+                    </form>
+                </div>
                 <p><%= book.title %></p>
                 <p><%= book.author %></p>
                 <p>$<%= book.price %></p>

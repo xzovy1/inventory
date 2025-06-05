@@ -9,7 +9,7 @@ const links = [
 exports.genresGet = async (req, res) => {
     //show all genres
     const genres = await db.getAllGenres();
-    res.render('genres', {links: links, genres: genres,});
+    res.render('genres', { genres: genres,});
 }
 
 exports.genresPost = async (req, res) => {
