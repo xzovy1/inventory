@@ -13,7 +13,7 @@
             <div>
                 <div>
                     <form action="/books/<%= book.id %>/delete" method="post">
-                        <button><img src="" alt="x"></button>
+                        <button onclick="return confirm('Delete Book?')"><img src="" alt="x"></button>
                     </form>
                 </div>
                 <p><%= book.title %></p>
@@ -39,7 +39,7 @@
         <input type="number" placeholder="quantity" name="quantity">
         <select name="genre_id" id="genre">
             <% genres.map( genre => { %>
-                <option value="<%= genre.id %>" ><%= genre.name %></option>
+                <option value="<%= genre.id %>" ><%= genre.genre %></option>
            <% }) %>
         </select>
         <button>Add</button>

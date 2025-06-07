@@ -9,8 +9,11 @@
     <a href="/homepage">Home</a>
     <h1>Genres</h1>
     <% genres.map(genre => { %>
-        <div>
-            <p><%= genre.name %></p>
+        <div class="genre" id="<%= genre.id %>">
+            <p><%= genre.genre %></p>
+            <form action="/genres/<%= genre.id %>" method="get">
+                <button>Find Related Books</button>
+            </form>
         </div>
     <% }) %>
     <!-- display all Genres in db -->

@@ -44,7 +44,7 @@ Since this will be for bookss the tables will be:
     if not logged in able to view but not update or delete.
 
   #### '/genres'
-    GET display all genres --> potentially generic photo of each one.
+    GET display all genres
     POST create new genre
       - name
       - description

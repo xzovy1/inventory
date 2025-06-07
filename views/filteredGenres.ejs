@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= genre %></title>
+</head>
+<body>
+    <a href="./">Back</a>
+    <h1><%= genre %></h1>
+    <% if (data.length !== 0) { %>
+    <% data.map(book => { %>
+        <div>
+            <p><%= book.title%></p>
+            <p><%= book.author%></p>
+            <form action="/books/<%= book.id %>" method="get">
+                <button>?</button>
+            </form>
+        </div>
+    <% }) %>
+    <% } else {%>
+    <h1> No Books Found</h1>
+    <%}%>
+</body>
+</html>

@@ -9,7 +9,7 @@ const links = [
 exports.genresGet = async (req, res) => {
     //show all genres
     const genres = await db.getAllGenres();
-    res.render('genres', { genres: genres,});
+    res.render('genres', { genres: genres});
 }
 
 exports.genresPost = async (req, res) => {
@@ -19,8 +19,12 @@ exports.genresPost = async (req, res) => {
     res.redirect('/genres');
 }
 
-exports.genreGet = (req, res) => {
+exports.genreGet = async (req, res) => {
     //show genre
+    const {id} = req.params;
+    const data = await db.getBooksInGenre(id);
+    const genre = data[0].genre;
+    res.render("filteredGenres", {data: data, genre: genre});
 }
 
 exports.genrePost = (req, res) => {
