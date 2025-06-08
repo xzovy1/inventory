@@ -1,15 +1,9 @@
 const db = require('../db/queries');
 
-const links = [
-    {href: '../homepage', text: 'Home'},
-    {href: '../books', text: 'Books'},
-    {href: '../users', text: 'Users'},
-]
-
 exports.genresGet = async (req, res) => {
     //show all genres
     const genres = await db.getAllGenres();
-    res.render('genres', { genres: genres});
+    res.render('templatePage', { genres: genres, title: "Genres", form: "genres"});
 }
 
 exports.genresPost = async (req, res) => {
@@ -24,11 +18,13 @@ exports.genreGet = async (req, res) => {
     const {id} = req.params;
     const data = await db.getBooksInGenre(id);
     const genre = data[0].genre;
-    res.render("filteredGenres", {data: data, genre: genre});
+    console.log(data);
+    res.render("filtered", {data: data, genre: genre, title: genre});
 }
 
 exports.genrePost = (req, res) => {
     //update genre
+    console.log(req.params)
 }
 
 exports.genreDelete = (req, res) => {

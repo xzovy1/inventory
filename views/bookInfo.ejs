@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= book.title%></title>
+</head>
+<body>
+    <a href="./">Back</a>
+    <h1><%= book.title%></h1>
+    <div>
+        <p>Author: <%=book.author %></p>
+        <p>Description: <%=book.description %></p>
+        <p>Quantity: <%=book.quantity %></p>
+        <p>Price: $<%=book.price %></p>
+        <p>More from: <a href="/genres/<%= book.fk_genres %>"><%=book.genre %></a></p>
+    </div>
+</body>
+</html>

@@ -1,28 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genres</title>
-</head>
-<body>
-    <a href="/homepage">Home</a>
-    <h1>Genres</h1>
-    <% genres.map(genre => { %>
-        <div class="genre" id="<%= genre.id %>">
-            <p><%= genre.genre %></p>
-            <form action="/genres/<%= genre.id %>" method="get">
-                <button>Find Related Books</button>
-            </form>
-        </div>
-    <% }) %>
-    <!-- display all Genres in db -->
-    <!-- contains: name, desc, generalized image -->
-     <h3>Add Genre:</h3>
-     <form method="post" action="/genres">
-        <label for="genre">Genre Name:</label>
-        <input type="text" name="genre">
-        <button>Add Genre</button>
-     </form>
-</body>
-</html>
+<% genres.map(genre => { %>
+    <div class="genre" id="<%= genre.id %>">
+        <p><%= genre.genre %></p>
+        <form action="/genres/<%= genre.id %>" method="get">
+            <button>Find Related Books</button>
+        </form>
+    </div>
+<% }) %>
+<!-- display all Genres in db -->
+<!-- contains: name, desc, generalized image -->
+    <h3>Add Genre:</h3>
+    <form method="post" action="/genres">
+    <label for="genre">Genre Name:</label>
+    <input type="text" name="genre">
+    <button>Add Genre</button>
+    </form>
