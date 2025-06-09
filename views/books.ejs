@@ -1,20 +1,19 @@
 <% books.map(book => { %>
     <!-- <li> -->
         <div>
-            <div>
-                <form action="/books/<%= book.id %>/delete" method="post">
-                    <button onclick="return confirm('Delete Book?')"><img src="" alt="x"></button>
-                </form>
-            </div>
             <%console.log(book)%>
             <p><%= book.title %></p>
             <p><%= book.author %></p>
             <p>$<%= book.price %></p>
-            <p><%= book.id %></p>
             <p>In Stock: <%= book.quantity %></p>
             <form action="/books/<%= book.id %>">
                 <button>?</button>
             </form>
+            <div>
+                <form action="/books/<%= book.id %>/delete" method="post">
+                    <button onclick="return confirm('Delete Book?')">x</button>
+                </form>
+            </div>
         </div>
     <!-- </li> -->
 <% }) %>
