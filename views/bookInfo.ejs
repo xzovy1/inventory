@@ -13,7 +13,11 @@
         <p>Description: <%=book.description %></p>
         <p>Quantity: <%=book.quantity %></p>
         <p>Price: $<%=book.price %></p>
-        <p>More from: <a href="/genres/<%= book.fk_genres %>"><%=book.genre %></a></p>
+        <p>Genre: <%= book.genre %></p>
+        <p>Book ID: <%= book.id %></p>
+        <form action="/books/<%=book.id%>/update" method="get">
+            <button>Update</button>
+        </form>
     </div>
 </body>
 </html>

@@ -11,7 +11,7 @@
     <% if (data[0].id !== null) { %>
     <% data.map(book => { %>
         <div>
-            <p><%= book.title%></p>
+            <p><b><%= book.title%></b></p>
             <p><%= book.author%></p>
             <form action="/books/<%= book.id %>" method="get">
                 <button>?</button>

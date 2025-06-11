@@ -18,7 +18,6 @@ exports.genreGet = async (req, res) => {
     const {id} = req.params;
     const data = await db.getBooksInGenre(id);
     const genre = data[0].genre;
-    console.log(data);
     res.render("filtered", {data: data, genre: genre, title: genre});
 }
 
