@@ -8,7 +8,7 @@ booksRouter.post('/', booksController.booksPost);
 booksRouter.get('/new', booksController.newBookGet);
 
 booksRouter.get('/:id', booksController.bookGet);
-booksRouter.post('/:id', booksController.bookPost);
+// booksRouter.post('/:id', booksController.bookPost);
 
 booksRouter.get('/:id/update', booksController.bookUpdateGet);
 booksRouter.post('/:id/update', booksController.bookUpdatePost);

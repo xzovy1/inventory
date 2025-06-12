@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <h3><%= title %>:</h3>
+    <form method="post" action="<%= action %>">
+        <label for="genre">Genre Name:</label>
+        <input type="text" name="genre" value="<%= genre || ''%>">
+        <button><%= title %></button>
+    </form>
+    <form action="<%= action %>/delete" method="post">
+        <button onclick="return confirm('Delete Category?')">Delete</button>
+    </form>
+</body>
+</html>

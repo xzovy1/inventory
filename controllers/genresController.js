@@ -21,11 +21,24 @@ exports.genreGet = async (req, res) => {
     res.render("filtered", {data: data, genre: genre, title: genre});
 }
 
-exports.genrePost = (req, res) => {
-    //update genre
-    console.log(req.params)
+exports.genreUpdateGet = async (req, res) => {
+    const {id} = req.params;
+    const [data] = await db.getGenre(id);
+    const {genre} = data;
+    res.render("genresForm", {title: 'Update Genre', action: `/genres/${id}`, genre: genre})
 }
 
-exports.genreDelete = (req, res) => {
+
+exports.genrePost = async (req, res) => {
+    //update genre
+    const {id} = req.params;
+    await db.updateGenre(id, genre);
+    res.redirect('/genres')
+}
+
+exports.genreDelete = async (req, res) => {
     //delete genre
+    const {id} = req.params;
+    await db.deleteGenre(id);
+    res.redirect('/genres')
 }

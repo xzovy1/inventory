@@ -15,8 +15,7 @@ async function getBookInfo(id){
     return rows;
 }
 
-async function updateBookInfo(title, author, description, price, quantity, genre_id, id){
-    console.log(title, author, description, price, quantity, genre_id, id)
+async function updateBook(title, author, description, price, quantity, genre_id, id){
     await db.query("UPDATE books SET (title, author, description, price, quantity, fk_genres) = ($1, $2, $3, $4, $5, $6) WHERE books.id = $7", [title, author, description, price, quantity, genre_id, id])
 }
 
@@ -31,13 +30,16 @@ async function deleteBook(bookId){
     await db.query("DELETE FROM books WHERE id = $1", [bookId]);
     const {rows} = await db.query('SELECT * FROM books');
     if(rows.length == 0){
-       await resetIdentity()
+       await resetBooksIdentity()
     }
 }
 
-async function resetIdentity(){
-    // await db.query('TRUNCATE TABLE genres RESTART IDENTITY CASCADE')
-    await db.query('TRUNCATE TABLE BOOKS RESTART IDENTITY')
+async function resetBooksIdentity(){
+    return await db.query('TRUNCATE TABLE BOOKS RESTART IDENTITY')
+}
+
+async function resetGenresIdentity(){
+    return await db.query('TRUNCATE TABLE genres RESTART IDENTITY CASCADE')
 }
 
 async function getAllGenres(){
@@ -45,17 +47,37 @@ async function getAllGenres(){
     return rows;
 }
 
+async function getGenre(id){
+    const {rows} = await db.query("SELECT * FROM genres WHERE id = $1", [id]);
+    return rows;
+}
+
+async function updateGenre(id, value){
+    await db.query("UPDATE genres SET genre = $1 WHERE id = $2", [value, id])
+}
+
 async function addGenre(genre){
     await db.query("INSERT INTO genres (genre) VALUES ($1)", [genre]);
+}
+
+async function deleteGenre(id){
+    await db.query("DELETE FROM genres WHERE id = $1", [id]);
+    const {rows} = await db.query('SELECT * FROM genres');
+    if(rows.length == 0){
+       await resetGenresIdentity()
+    }
 }
 
 module.exports = {
     getAllBooks,
     getBooksInGenre,
-    updateBookInfo,
+    updateBook,
     addBook,
+    deleteBook,
     getBookInfo,
     getAllGenres,
+    getGenre,
     addGenre,
-    deleteBook,
+    updateGenre,
+    deleteGenre
 }
