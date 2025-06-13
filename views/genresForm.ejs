@@ -9,7 +9,7 @@
     <h3><%= title %>:</h3>
     <form method="post" action="<%= action %>">
         <label for="genre">Genre Name:</label>
-        <input type="text" name="genre" value="<%= genre || ''%>">
+        <input type="text" name="genre" value="<%= genre || ''%>" required minlength="1" maxlength="40">
         <button><%= title %></button>
     </form>
     <form action="<%= action %>/delete" method="post">

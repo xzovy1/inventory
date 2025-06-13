@@ -9,17 +9,18 @@
     <a href="./">Back</a>
     <h1><%= title %>:</h1>
     <form action="<%= action %>" method="post">
+        <%- include("partials/errors.ejs") %>
         <label for="title"></label>
-        <input type="text" placeholder="Title" id="title" name="title" value="<%= book.title || '' %>">
+        <input type="text" placeholder="Title" id="title" name="title" value="<%= book.title || '' %>" required minlength="1" maxlength="40">
         <label for="author"></label>
-        <input type="text" placeholder="Author" name="author" value="<%= book.author || '' %>">
+        <input type="text" placeholder="Author" name="author" value="<%= book.author || '' %>" required minlength="1" maxlength="40">
         <label for="description"></label>
-        <textarea name="description" id="description" placeholder="Description" name="description"><%= book.description || '' %></textarea>
+        <textarea name="description" id="description" placeholder="Description" name="description" required minlength="1" maxlength="250"><%= book.description || '' %></textarea>
         <label for="price"></label>
-        <input type="number" name="price" id="price" placeholder="Price" name="price" step=".01" value="<%= book.price || '' %>">
+        <input type="number" name="price" id="price" placeholder="Price" name="price" step=".01" value="<%= book.price || '' %>" required>
         <label for="quantity"></label>
         <input type="number" placeholder="Quantity" name="quantity" value="<%= book.quantity || '' %>">
-        <select name="genre_id" id="genre">
+        <select name="genre_id" id="genre" required>
             <% genres.map( genre => { %>
                 <option value="<%= genre.id %>" <% if(book.genre == genre.genre){ %>
                     selected
