@@ -9,15 +9,7 @@
     <a href="./">Back</a>
     <h1><%= title %></h1>
     <% if (data[0].id !== null) { %>
-    <% data.map(book => { %>
-        <div>
-            <p><b><%= book.title%></b></p>
-            <p><%= book.author%></p>
-            <form action="/books/<%= book.id %>" method="get">
-                <button>?</button>
-            </form>
-        </div>
-    <% }) %>
+        <%- include("partials/books",{books: data}) %>
     <% } else {%>
         <h3> No Books Found</h3>
     <%}%>

@@ -32,7 +32,7 @@ exports.genreGet = async (req, res) => {
     const {id} = req.params;
     const data = await db.getBooksInGenre(id);
     const genre = data[0].genre;
-    res.render("filtered", {data: data, genre: genre, title: genre});
+    res.render("filteredGenre", {data: data, genre: genre, title: genre});
 }
 
 exports.genreUpdateGet = async (req, res) => {
