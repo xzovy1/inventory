@@ -1,9 +1,10 @@
 const db = require('../db/queries');
+const { body, validationResult} = require('express-validator');
 
 exports.booksGet = async(req, res) => {
     //show all books
     const books = await db.getAllBooks();
-    res.render('templatePage', {books: books, title: 'Books', form: 'books'});
+    res.render('templatePage', {books: books, title: 'Books', form: 'partials/books'});
 }
 
 exports.newBookGet = async (req, res) => {

@@ -6,15 +6,21 @@
     <title><%= book.title%></title>
 </head>
 <body>
-    <a href="./">Back</a>
+    <a href="../">Back</a>
     <h1><%= book.title%></h1>
     <div>
-        <p>Author: <%=book.author %></p>
-        <p>Description: <%=book.description %></p>
-        <p>Quantity: <%=book.quantity %></p>
-        <p>Price: $<%=book.price %></p>
-        <p>Genre: <%= book.genre %></p>
-        <p>Book ID: <%= book.id %></p>
+        <p>Author:</p> 
+        <p> <%=book.author %></p>
+        <p>Description:</p>
+        <p> <%=book.description %></p>
+        <p>Quantity: </p>
+         <p><%=book.quantity %></p>
+        <p>Price:</p> 
+        <p> $<%=book.price %></p>
+        <p>Genre: </p> 
+        <p><%= book.genre %></p>
+        <p>Book ID:</p> 
+        <p> <%= book.id %></p>
         <form action="/books/<%=book.id%>/update" method="get">
             <button>Update</button>
         </form>
