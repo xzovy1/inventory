@@ -1,7 +1,7 @@
 const db = require('./pool');
 
 async function getAllBooks() {
-    const {rows} = await db.query("SELECT books.id, title, author, description, genre, price ,quantity  FROM books JOIN genres ON books.fk_genres = genres.id;");
+    const {rows} = await db.query("SELECT books.id, title, author, books.description, genre, price ,quantity  FROM books JOIN genres ON books.fk_genres = genres.id;");
     return rows;
 }
 
@@ -32,6 +32,11 @@ async function deleteBook(bookId){
     if(rows.length == 0){
        await resetBooksIdentity()
     }
+}
+
+async function deleteAllBooks(){
+    await db.query('DELETE FROM books');
+    await resetBooksIdentity();
 }
 
 async function resetBooksIdentity(){
@@ -68,16 +73,23 @@ async function deleteGenre(id){
     }
 }
 
+async function deleteAllGenres(){
+    await db.query("DELETE FROM genres");
+    await resetGenresIdentity();
+}
+
 module.exports = {
     getAllBooks,
     getBooksInGenre,
     updateBook,
     addBook,
     deleteBook,
+    deleteAllBooks,
     getBookInfo,
     getAllGenres,
     getGenre,
     addGenre,
     updateGenre,
-    deleteGenre
+    deleteGenre,
+    deleteAllGenres,
 }

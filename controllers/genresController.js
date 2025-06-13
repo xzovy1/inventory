@@ -67,3 +67,13 @@ exports.genreDelete = async (req, res) => {
     await db.deleteGenre(id);
     res.redirect('/genres')
 }
+
+exports.genresDeleteAll = async (req, res) => {
+    try{
+        await db.deleteAllGenres();
+    }catch(err){
+        console.error(err)
+       return res.status(500).send(`<h1>500: ${err.severity}</h1><div>${err.detail} Remove books from specified genre</div> <a href="./">Back to Safety</a>`)
+    }
+    res.redirect('/genres');
+}
