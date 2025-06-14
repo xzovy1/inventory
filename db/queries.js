@@ -11,7 +11,7 @@ async function getBooksInGenre(id){
 }
 
 async function getBookInfo(id){
-    const { rows } = await db.query("SELECT books.id, title, author, description, quantity, price, fk_genres , genre FROM books LEFT JOIN genres ON books.fk_genres = genres.id WHERE books.id = $1", [id]);
+    const { rows } = await db.query("SELECT books.id, title, author, books.description, quantity, price, fk_genres , genre FROM books LEFT JOIN genres ON books.fk_genres = genres.id WHERE books.id = $1", [id]);
     return rows;
 }
 

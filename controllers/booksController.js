@@ -9,7 +9,7 @@ const validateInput = [
     body(['title', 'author'])
         .trim()
         .isLength({min: 1, max: 40}).withMessage(`Author and Title fields  ${lengthErr}`)
-        .isAlphanumeric({ignore: " "}).withMessage(`Author and Title fields ${alphaNumericErr}`),
+        .matches(/[A-Za-z 0-9]/).withMessage(`Author and Title fields ${alphaNumericErr}`),
     body('description')
         .trim()
         .isLength({min: 10, max: 250}).withMessage("Description must be between 10 and 250 characters"),
@@ -67,6 +67,11 @@ exports.bookUpdateGet = async (req, res) => {
 exports.bookUpdatePost = [
     validateInput,
     async (req, res) => {
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){
+            const genres = await db.getAllGenres();
+            return res.status(400).render('bookForm', {genres: genres, title: 'Add Book', book: req.body, action: '/books', errors: errors.array()})
+        }
     //update book
     const { title, author, description, price, quantity, genre_id } = req.body;
     const { id } = req.params;
