@@ -1,5 +1,5 @@
 <% genres.map(genre => { %>
-    <div class="genre" id="<%= genre.id %>">
+    <div class="genre item" id="<%= genre.id %>">
         <div>
             <p><%= genre.genre %></p>
             <form action="/genres/<%= genre.id %>/update" method="get">
