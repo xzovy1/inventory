@@ -1,3 +1,12 @@
+<div id="add-genre" class="item">
+    <%- include("errors.ejs") %>
+    <h3>Add Genre:</h3>
+    <form method="post" action="/genres">
+        <label for="genre">Genre Name:</label>
+        <input type="text" name="genre" id="genre">
+        <button>Add Genre</button>
+    </form>
+</div>
 <% genres.map(genre => { %>
     <div class="genre item" id="<%= genre.id %>">
         <div>
@@ -11,15 +20,3 @@
         </form>
     </div>
 <% }) %>
-<!-- display all Genres in db -->
-<!-- contains: name, desc, generalized image -->
-    <h3>Add Genre:</h3>
-    <form method="post" action="/genres">
-    <label for="genre">Genre Name:</label>
-    <input type="text" name="genre" id="genre">
-    <button>Add Genre</button>
-    </form>
-    <form action="/genres/deleteAll" method="post">
-        <button>Delete</button>
-    </form>
-    <%- include("errors.ejs") %>

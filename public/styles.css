@@ -26,13 +26,16 @@ body > * {
 
 #home-navigation > * {
     
-    border-radius: 10px;
     background-color: #2a2a2a;
-    text-decoration: none;
     color: #FFFFFF;
-    font-size: x-large;
+    border-radius: 10px;
     margin: 0;
+}
 
+a {
+    font-size: x-large;
+    text-decoration: none;
+    
 }
 
 #home-navigation > a > svg,
