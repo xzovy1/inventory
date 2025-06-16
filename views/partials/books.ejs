@@ -1,21 +1,25 @@
-<a href="/books/new" class="item">Add a Book</a>
+<a href="/books/new" >Add a Book</a>
+<div class="grouped-items">
 <% books.map(book => { %>
     <!-- <li> -->
         <div class="book item">
-            <p><%= book.title %></p>
+            <h4><%= book.title %></h4>
             <p><%= book.author %></p>
+            <p><%= book.genre %></p>
             <p>$<%= book.price %></p>
             <p>In Stock: <%= book.quantity %></p>
-            <form action="/books/<%= book.id %>">
-                <button>?</button>
-            </form>
-            <div>
-                <form action="/books/<%= book.id %>/delete" method="post">
-                    <button onclick="return confirm('Delete Book?')">x</button>
+            <div class="buttons">
+
+                <form action="/books/<%= book.id %>">
+                    <button>?</button>
                 </form>
+                    <form action="/books/<%= book.id %>/delete" method="post">
+                        <button onclick="return confirm('Delete Book?')">x</button>
+                    </form>
             </div>
         </div>
     <!-- </li> -->
 <% }) %>
+</div>
 <!-- display all Books in db -->
 <!-- contains name, image  -->

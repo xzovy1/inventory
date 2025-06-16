@@ -1,22 +1,22 @@
-<div id="add-genre" class="item">
-    <%- include("errors.ejs") %>
+<form method="post" action="/genres">
     <h3>Add Genre:</h3>
-    <form method="post" action="/genres">
+    <%- include("errors.ejs") %>
         <label for="genre">Genre Name:</label>
-        <input type="text" name="genre" id="genre">
+        <input type="text" name="genre" id="genre" required>
         <button>Add Genre</button>
     </form>
-</div>
-<% genres.map(genre => { %>
-    <div class="genre item" id="<%= genre.id %>">
-        <div>
+<div class="grouped-items">
+
+    <% genres.map(genre => { %>
+        <div class="genre item" id="<%= genre.id %>">
             <p><%= genre.genre %></p>
             <form action="/genres/<%= genre.id %>/update" method="get">
                 <button>Update</button>
             </form>
+            <form action="/genres/<%= genre.id %>" method="get">
+                <button>Find Related Books</button>
+            </form>
         </div>
-        <form action="/genres/<%= genre.id %>" method="get">
-            <button>Find Related Books</button>
-        </form>
-    </div>
-<% }) %>
+        <% }) %>
+</div>
+        

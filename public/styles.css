@@ -11,6 +11,12 @@ body{
     margin: 25% auto;
     max-width: 600px;
 }
+.header, .footer{
+    display: grid;  
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-around;
+    align-items: center;
+}
 
 body > * {
     color: #2a2a2a;
@@ -32,11 +38,45 @@ body > * {
     margin: 0;
 }
 
+#genres-nav:hover {
+    background-color: rgb(30, 155, 30);
+}
+
+#books-nav:hover{
+    background-color: rgb(30, 30, 175);
+}
+
+#book-info p {
+    padding: 5px;
+}
+#book-info h3 {
+    align-self:self-start;
+    justify-self: center;
+    /* margin: 0.25em; */
+}
+
+#book-update, #book-info{
+    display: grid;
+    gap: 10px;
+}
+#book-info{
+    grid-template-columns: 1fr 1fr;
+    place-content: center;
+    align-items: center;
+}
+
 a {
     font-size: x-large;
-    text-decoration: none;
-    
+    text-align: center;
+    padding: 5px;
+    border-radius: 8px;
+    transition: all 200ms ease-in-out;
 }
+
+a:hover{
+    color: rgb(70, 70, 255);
+}
+
 
 #home-navigation > a > svg,
 #home-navigation > a > p {
@@ -45,12 +85,42 @@ a {
 
 .grouped-items{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+    max-height: 70vh;
+    padding: 2rem;
 }
 
 .item{
-    border: 1px solid black;
-    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    transition: box-shadow 500ms linear;
+    border-radius: 1rem;
+    margin: 5px;
+    padding: 1em;
 }
 
+.item:hover{
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    grid-column: 3;
+}
+
+.buttons button{
+    padding: 5px 25px;
+}
+button {
+    background-color: rgb(60, 60, 226);
+    border: none;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 3px;
+}
+
+button:hover {
+    background-color: rgb(91, 91, 240);
+}
